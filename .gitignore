@@ -10,3 +10,6 @@ simplest_ffmpeg_android_decoder_onelib/
 simplest_ffmpeg_android_decoder_onelib1/.gradle/
 simplest_ffmpeg_android_decoder_onelib1/.idea/
 simplest_ffmpeg_android_decoder_onelib1/app/build/
+simplest_ffmpeg_android_encoder/.gradle/
+simplest_ffmpeg_android_encoder/.idea/
+simplest_ffmpeg_android_encoder/app/build/
