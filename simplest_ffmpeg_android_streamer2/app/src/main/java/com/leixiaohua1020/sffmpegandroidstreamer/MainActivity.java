@@ -17,9 +17,11 @@
  */
 package com.leixiaohua1020.sffmpegandroidstreamer;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.os.Environment;
 import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -27,13 +29,17 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class MainActivity extends Activity {
+import com.tbruyelle.rxpermissions2.RxPermissions;
+
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
+        getPermission();
+
 		Button startButton = (Button) this.findViewById(R.id.button_start);
 		final EditText urlEdittext_input= (EditText) this.findViewById(R.id.input_url);
 		final EditText urlEdittext_output= (EditText) this.findViewById(R.id.output_url);
@@ -50,17 +56,32 @@ public class MainActivity extends Activity {
 		        
 		        Log.e("inputurl",inputurl);
 		        Log.e("outputurl",outputurl);
-		        String info="";
-		    
-		        stream(inputurl,outputurl);
-		        
-		        Log.e("Info",info);
+		        String info="info";
+
+				int stream = stream(inputurl, outputurl);
+
+				Log.e("Info",info+stream);
 			}
 		});
     }
 
+	private void getPermission() {
+		RxPermissions r = new RxPermissions(this);
+		r.requestEach(Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE)
+				.subscribe(permission ->{
+					if (permission.granted) {
 
-    @Override
+					} else if (permission.shouldShowRequestPermissionRationale) {
+						// Denied permission without ask never again
+					} else {
+						// Desettingsnied permission with ask never again
+						// Need to go to the
+					}
+				});
+	}
+
+
+	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
