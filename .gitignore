@@ -17,3 +17,6 @@ simplest_ffmpeg_android_streamer/
 simplest_ffmpeg_android_streamer2/.gradle/
 simplest_ffmpeg_android_streamer2/.idea/
 simplest_ffmpeg_android_streamer2/app/build/
+simplest_ffmpeg_android_transcoder/.gradle/
+simplest_ffmpeg_android_transcoder/.idea/
+simplest_ffmpeg_android_transcoder/app/build/
